@@ -55,7 +55,9 @@ namespace Ecommerce.StepDefinitions
         public void WhenILogInWithValidCredentials()
         {
             _loginPage.Login("standard_user", "secret_sauce");
-            Thread.Sleep(7000);
+            //using Explicit Wait
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+            wait.Until(driver => driver.FindElement(By.ClassName("title")).Displayed);
 
         }
 
